@@ -65,6 +65,7 @@
   height: 100%;
   width: 100%;
   background-image: url("../assets/shu.jpg");
+  background-position: center;
 }
 </style>
 <script>

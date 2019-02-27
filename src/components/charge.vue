@@ -96,7 +96,7 @@
           </div>
           <MenuItem name="1-2" to="/charge">
             <Icon type="md-code"/>
-            <span>维护管理</span>
+            <span>课程管理</span>
           </MenuItem>
         </Menu>
         <div slot="trigger"></div>
@@ -105,7 +105,7 @@
         <Breadcrumb :style="{marginLeft:'40px',marginTop:'40px'}">
           <BreadcrumbItem>SQL</BreadcrumbItem>
           <BreadcrumbItem>选课管理系统</BreadcrumbItem>
-          <BreadcrumbItem>维护管理</BreadcrumbItem>
+          <BreadcrumbItem>课程管理</BreadcrumbItem>
         </Breadcrumb>
 
         <Content :style="{marginTop: '50px',  minHeight: '500px'}">
@@ -115,7 +115,8 @@
               <Tabs type="card" :style="{width:'1000px',height:'700px'}">
                 <TabPane label="所有已开课程">
                   <div style="width:30%;margin:5px"></div>
-                  <Table @on-row-click="getchart" :data="Data" :columns="tableColumns1" stripe></Table>
+                  <Table :data="Data" :columns="tableColumns1" stripe></Table>
+                  <!--<Table @on-row-click="getchart" :data="Data" :columns="tableColumns1" stripe></Table>-->
                   <div style="margin: 10px;overflow: hidden;">
                     <div style="float: right;">
                       <Page
@@ -215,33 +216,6 @@
             </Col>
             <Col span="3"></Col>
             <Col span="6">
-              <!-- <div style="color:#52586E;width:300px;margin:-30px;margin-bottom:auto">
-                <Card :bordered="true">
-                  <p slot="title">
-                    <Icon type="ios-analytics"></Icon>个人信息
-                  </p>
-                  <p>
-                    <Icon type="md-done-all"/>
-                    工号： {{GLOBAL.sno}}
-                  </p>
-                  <p>
-                    <Icon type="md-done-all"/>
-                    姓名： {{GLOBAL.sname}}
-                  </p>
-                  <p>
-                    <Icon type="md-done-all"/>
-                    性别： {{GLOBAL.sex}}
-                  </p>
-                  <p>
-                    <Icon type="md-done-all"/>
-                    年龄： {{GLOBAL.age}}
-                  </p>
-                  <p>
-                    <Icon type="md-done-all"/>
-                    学院： {{GLOBAL.sdept}}
-                  </p>
-                </Card>
-              </div>-->
             </Col>
           </Row>
         </Content>

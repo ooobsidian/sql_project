@@ -108,7 +108,7 @@
           </MenuItem>
           <MenuItem v-show="!Istu" name="1-4" to="/charge">
             <Icon type="md-code"/>
-            <span>维护管理</span>
+            <span>课程管理</span>
           </MenuItem>
         </Menu>
         <div slot="trigger"></div>

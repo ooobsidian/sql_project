@@ -60,7 +60,8 @@
   .land {
     height: 100%;
     width: 100%;
-    background-image: url("../assets/shu.jpg");
+    background-image: url("../assets/shu1.jpg");
+    background-position: center;
   }
 
   .ivu-col-span-12 {

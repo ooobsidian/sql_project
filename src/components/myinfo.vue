@@ -15,7 +15,7 @@
                 <div style="height:100px"></div>
               </Col>
               <Col span="8">
-                <Avatar :style="{background: color}" size="large"  src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3253669902,1784406936&fm=27&gp=0.jpg"></Avatar>
+                <Avatar :style="{background: color}" size="large"  src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3253669902,1784406936&fm=27&gp=0.jpg"></Avatar>{{}}
               </Col>
               <Col span="8"></Col>
             </Row>
