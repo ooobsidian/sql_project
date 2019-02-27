@@ -134,7 +134,7 @@
                       </Col>
                     </Row>
                     <div v-show="!isShow">
-                      <Table :data="Data1" :columns="tableColumns2">
+                      <Table :data="Data1" :columns="tableColumns2" stripe border>
                         <template slot-scope="{ row, index }" slot="sno">
                           <span>{{ row.sno }}</span>
                         </template>
@@ -160,11 +160,11 @@
                         </template>
                         <template slot-scope="{ row, index }" slot="action">
                           <div v-if="editIndex === index">
-                            <Button @click="handleSave(index)">保存</Button>
-                            <Button @click="editIndex = -1">取消</Button>
+                            <Button @click="handleSave(index)" type="success">保存</Button>
+                            <Button @click="editIndex = -1" type="error">取消</Button>
                           </div>
                           <div v-else>
-                            <Button @click="handleEdit(row, index)">修改</Button>
+                            <Button @click="handleEdit(row, index)" type="info">修改</Button>
                           </div>
                         </template>
                       </Table>
@@ -202,8 +202,8 @@
                                 <Input v-model="formItem.sdept" placeholder="请输入院系姓名"></Input>
                               </FormItem>
                               <FormItem>
-                                <Button @click="submitcourse()" type="primary">提交</Button>
-                                <Button style="margin-left: 8px">取消</Button>
+                                <Button @click="submitcourse()" type="success">提交</Button>
+                                <Button style="margin-left: 8px" type="error">取消</Button>
                               </FormItem>
                             </Form>
                           </Col>
