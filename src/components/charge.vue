@@ -115,8 +115,8 @@
               <Tabs type="card" :style="{width:'1000px',height:'700px'}">
                 <TabPane label="所有已开课程">
                   <div style="width:30%;margin:5px"></div>
-                  <Table :data="Data" :columns="tableColumns1" stripe></Table>
-                  <!--<Table @on-row-click="getchart" :data="Data" :columns="tableColumns1" stripe></Table>-->
+                  <!--<Table :data="Data" :columns="tableColumns1" stripe></Table>-->
+                  <Table @on-row-click="getchart" :data="Data" :columns="tableColumns1" stripe></Table>
                   <div style="margin: 10px;overflow: hidden;">
                     <div style="float: right;">
                       <Page
@@ -130,7 +130,7 @@
                   <Drawer :closable="false" width="50" v-model="value">
                     <Row type="flex" justify="end" class="code-row-bg">
                       <Col span="4" :style="{marginBottom:'10px'}">
-                        <i-switch v-model="switch1" @on-change="change" size="large"/>
+                        <!--<i-switch v-model="switch1" @on-change="change" size="large"/>-->
                       </Col>
                     </Row>
                     <div v-show="!isShow">
