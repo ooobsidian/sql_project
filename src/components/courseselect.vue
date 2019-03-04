@@ -1,76 +1,3 @@
-<style scoped>
-  .icon {
-    height: 100px;
-    display: block;
-    margin: 0;
-    padding: 0;
-    outline: 0;
-    list-style: none;
-    color: #f4f7f9;
-    font-size: 14px;
-    position: relative;
-    z-index: 900;
-  }
-
-  .layout {
-    border: 1px solid #d7dde4;
-    background: #f5f7f9;
-    position: relative;
-    border-radius: 4px;
-    overflow: hidden;
-    height: 100vh;
-  }
-
-  .layout-header-bar {
-    background: #fff;
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-  }
-
-  .menu-item span {
-    display: inline-block;
-    overflow: hidden;
-    width: 69px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    vertical-align: bottom;
-    transition: width 0.2s ease 0.2s;
-  }
-
-  .menu-item i {
-    transform: translateX(0px);
-    transition: font-size 0.2s ease, transform 0.2s ease;
-    vertical-align: middle;
-    font-size: 16px;
-  }
-
-  .collapsed-menu span {
-    width: 0px;
-    transition: width 0.2s ease;
-  }
-
-  .collapsed-menu i {
-    transform: translateX(5px);
-    transition: font-size 0.2s ease 0.2s, transform 0.2s ease 0.2s;
-    vertical-align: middle;
-    font-size: 22px;
-  }
-
-  .ivu-layout-sider {
-    background: #2d8cf0 !important;
-  }
-
-  .ivu-menu-dark {
-    background: #2d8cf0 !important;
-  }
-
-  .ivu-menu-item-selected {
-    background: #256dc1 !important;
-    color: aliceblue !important;
-  }
-  .ivu-menu-item:hover {
-    background: #2f8ff7 !important;
-  }
-</style>
 <template>
   <div class="layout">
     <Layout>
@@ -171,14 +98,6 @@
                     <div style="float:left;">
                       <Button type="primary" size="large" @click="quitCourse()">退课</Button>
                     </div>
-                    <!-- <div style="float: right;">
-                      <Page
-                        :total="size"
-                        :page-size="pageSize"
-                        :current="1"
-                        @on-change="changePage"
-                      ></Page>
-                    </div>-->
                   </div>
                 </TabPane>
               </Tabs>
@@ -186,28 +105,6 @@
             <Col span="3"></Col>
             <Col span="6">
               <div style="color:#52586E;width:300px;margin:-30px;margin-bottom:auto">
-                <!--<Card :bordered="true">-->
-                <!--<p slot="title">-->
-                <!--<Icon type="ios-people"></Icon>&nbsp;&nbsp;个人信息-->
-                <!--</p>-->
-                <!--<p>-->
-                <!--学号： {{GLOBAL.sno}}-->
-                <!--</p>-->
-
-                <!--<p>-->
-                <!--姓名： {{GLOBAL.sname}}-->
-                <!--</p>-->
-                <!--<p>-->
-                <!--性别： {{GLOBAL.sex}}-->
-                <!--</p>-->
-                <!--<p>-->
-                <!--年龄： {{GLOBAL.age}}-->
-                <!--</p>-->
-
-                <!--<p>-->
-                <!--学院： {{GLOBAL.sdept}}-->
-                <!--</p>-->
-                <!--</Card>-->
               </div>
             </Col>
           </Row>
@@ -363,8 +260,6 @@
       },
       handleCourse() {
         //提交选课
-        // var courses = JSON.stringify(this.handlecourse);
-        // console.log(courses);
         this.$axios
           .post(
             "/selectcourse",
@@ -434,3 +329,76 @@
     }
   };
 </script>
+<style scoped>
+  .icon {
+    height: 100px;
+    display: block;
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    list-style: none;
+    color: #f4f7f9;
+    font-size: 14px;
+    position: relative;
+    z-index: 900;
+  }
+
+  .layout {
+    border: 1px solid #d7dde4;
+    background: #f5f7f9;
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    height: 100vh;
+  }
+
+  .layout-header-bar {
+    background: #fff;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  }
+
+  .menu-item span {
+    display: inline-block;
+    overflow: hidden;
+    width: 69px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: bottom;
+    transition: width 0.2s ease 0.2s;
+  }
+
+  .menu-item i {
+    transform: translateX(0px);
+    transition: font-size 0.2s ease, transform 0.2s ease;
+    vertical-align: middle;
+    font-size: 16px;
+  }
+
+  .collapsed-menu span {
+    width: 0px;
+    transition: width 0.2s ease;
+  }
+
+  .collapsed-menu i {
+    transform: translateX(5px);
+    transition: font-size 0.2s ease 0.2s, transform 0.2s ease 0.2s;
+    vertical-align: middle;
+    font-size: 22px;
+  }
+
+  .ivu-layout-sider {
+    background: #2d8cf0 !important;
+  }
+
+  .ivu-menu-dark {
+    background: #2d8cf0 !important;
+  }
+
+  .ivu-menu-item-selected {
+    background: #256dc1 !important;
+    color: aliceblue !important;
+  }
+  .ivu-menu-item:hover {
+    background: #2f8ff7 !important;
+  }
+</style>

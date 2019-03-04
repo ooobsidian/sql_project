@@ -51,6 +51,7 @@
                 </FormItem>
                 <FormItem>
                   <Button type="primary" @click="handleSubmit('formValidate')">提交</Button>
+                  <Button @click="toHomePage" style="margin-left: 25px">返回主页</Button>
                 </FormItem>
               </Form>
             </Col>
@@ -60,14 +61,6 @@
     </Row>
   </div>
 </template>
-<style scoped>
-.land {
-  height: 100%;
-  width: 100%;
-  background-image: url("../assets/shu.jpg");
-  background-position: center;
-}
-</style>
 <script>
 export default {
   name: "register",
@@ -134,6 +127,9 @@ export default {
     };
   },
   methods: {
+    toHomePage(){
+      this.$router.push('land')
+    },
     handleSubmit(name) {
       this.$refs[name].validate(valid => {
         if (valid) {
@@ -158,3 +154,13 @@ export default {
   }
 };
 </script>
+<style scoped>
+  .land {
+    height: 100%;
+    width: 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-image: url("../assets/shu.jpg");
+    background-position: center;
+  }
+</style>

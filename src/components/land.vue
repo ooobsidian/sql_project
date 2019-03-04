@@ -56,18 +56,6 @@
     </Row>
   </div>
 </template>
-<style scoped>
-  .land {
-    height: 100%;
-    width: 100%;
-    background-image: url("../assets/shu1.jpg");
-    background-position: center;
-  }
-
-  .ivu-col-span-12 {
-    width: 30% !important;
-  }
-</style>
 <script>
   import axios from "axios";
   import qs from "qs";
@@ -118,8 +106,8 @@
           .post(
             "/land",
             qs.stringify({
-              login: this.formInline.login
-              // pswd: this.formInline.password
+              login: this.formInline.login,
+               pswd: this.formInline.password
             }),
             {emulateJSON: true}
           )
@@ -159,6 +147,19 @@
   };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+</style>
+<style scoped>
+  .land {
+    height: 100%;
+    width: 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-image: url("../assets/shu1.jpg");
+    background-position: center;
+  }
+
+  .ivu-col-span-12 {
+    width: 30% !important;
+  }
 </style>
