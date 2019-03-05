@@ -12,10 +12,10 @@
           <div class="icon">
             <Row type="flex" align="middle" class="code-row-bg">
               <Col span="8">
-                <div style="height:100px"></div>
+              <div style="height:100px"></div>
               </Col>
               <Col span="8">
-                  <Avatar :style="{background: color}" size="large">{{GLOBAL.sname}}</Avatar>
+              <Avatar :style="{background: color}" size="large">{{GLOBAL.sname}}</Avatar>
               </Col>
               <Button size="small" type="dashed" ghost @click.native="logout">注销</Button>
               <Col span="8"></Col>
@@ -43,7 +43,6 @@
       </Sider>
       <Layout :style="{marginLeft: '200px'}">
         <Breadcrumb :style="{marginLeft:'40px',marginTop:'40px'}">
-          <BreadcrumbItem>SQL</BreadcrumbItem>
           <BreadcrumbItem>选课管理系统</BreadcrumbItem>
           <BreadcrumbItem>课程管理</BreadcrumbItem>
         </Breadcrumb>
@@ -52,61 +51,61 @@
           <Row type="flex" align="middle" justify="end" class="code-row-bg">
             <Col span="1"></Col>
             <Col span="14">
-              <Tabs type="card" :style="{width:'1000px',height:'700px'}">
-                <TabPane label="选课">
-                  <div style="width:30%;margin:5px">
-                    <Input
-                      search
-                      clearable
-                      icon="ios-search"
-                      v-model="search"
-                      @keyup.enter.native="searchForm()"
-                      @on-change="backvalue()"
-                      @on-click="searchForm()"
-                      placeholder="输入课程信息..."
-                    />
+            <Tabs type="card" :style="{width:'1000px',height:'700px'}">
+              <TabPane label="选课">
+                <div style="width:30%;margin:5px">
+                  <Input
+                    search
+                    clearable
+                    icon="ios-search"
+                    v-model="search"
+                    @keyup.enter.native="searchForm()"
+                    @on-change="backvalue()"
+                    @on-click="searchForm()"
+                    placeholder="输入课程信息..."
+                  />
+                </div>
+                <Table
+                  :data="Data"
+                  :columns="tableColumns1"
+                  ref="selection"
+                  @on-selection-change="handleRow"
+                  stripe
+                ></Table>
+                <div style="margin: 10px;overflow: hidden;">
+                  <div style="float:left;">
+                    <Button type="primary" size="large" @click="handleCourse()">选课</Button>
                   </div>
-                  <Table
-                    :data="Data"
-                    :columns="tableColumns1"
-                    ref="selection"
-                    @on-selection-change="handleRow"
-                    stripe
-                  ></Table>
-                  <div style="margin: 10px;overflow: hidden;">
-                    <div style="float:left;">
-                      <Button type="primary" size="large" @click="handleCourse()">选课</Button>
-                    </div>
-                    <div style="float: right;">
-                      <Page
-                        :total="size1"
-                        :page-size="pageSize"
-                        :current="1"
-                        @on-change="changePage"
-                      ></Page>
-                    </div>
+                  <div style="float: right;">
+                    <Page
+                      :total="size1"
+                      :page-size="pageSize"
+                      :current="1"
+                      @on-change="changePage"
+                    ></Page>
                   </div>
-                </TabPane>
-                <TabPane label="退课">
-                  <Table
-                    :data="Data1"
-                    :columns="tableColumns1"
-                    ref="sentence"
-                    @on-selection-change="quitRow"
-                    stripe
-                  ></Table>
-                  <div style="margin: 10px;overflow: hidden;">
-                    <div style="float:left;">
-                      <Button type="primary" size="large" @click="quitCourse()">退课</Button>
-                    </div>
+                </div>
+              </TabPane>
+              <TabPane label="退课">
+                <Table
+                  :data="Data1"
+                  :columns="tableColumns1"
+                  ref="sentence"
+                  @on-selection-change="quitRow"
+                  stripe
+                ></Table>
+                <div style="margin: 10px;overflow: hidden;">
+                  <div style="float:left;">
+                    <Button type="primary" size="large" @click="quitCourse()">退课</Button>
                   </div>
-                </TabPane>
-              </Tabs>
+                </div>
+              </TabPane>
+            </Tabs>
             </Col>
             <Col span="3"></Col>
             <Col span="6">
-              <div style="color:#52586E;width:300px;margin:-30px;margin-bottom:auto">
-              </div>
+            <div style="color:#52586E;width:300px;margin:-30px;margin-bottom:auto">
+            </div>
             </Col>
           </Row>
         </Content>
@@ -172,7 +171,7 @@
     },
 
     methods: {
-      logout(){
+      logout() {
         this.$router.push('/land')
       },
       Istud() {
@@ -256,37 +255,39 @@
             console.log(response);
             this.getOwn();
 
-            this.$Message.success("退课成功");
+            this.$Message.success("退课成功！");
           })
           .catch(failResponse => {
-            this.$Message.error("退课失败");
+            this.$Message.error("退课失败！");
           });
       },
       handleCourse() {
         //提交选课
-        this.$axios
-          .post(
-            "/selectcourse",
-            {
-              courses: JSON.stringify(this.handlecourse),
-              sno: JSON.stringify(this.GLOBAL.sno)
-            },
-            {
-              emulateJSON: true
-            },
-            "application/json"
-          )
-          .then(response => {
-            this.getOwn();
-            this.$Message.success("选课成功");
+        if (this.handlecourse.length) {
+          this.$axios
+            .post(
+              "/selectcourse",
+              {
+                courses: JSON.stringify(this.handlecourse),
+                sno: JSON.stringify(this.GLOBAL.sno)
+              },
+              {
+                emulateJSON: true
+              },
+              "application/json"
+            )
+            .then(response => {
+              this.getOwn();
+              this.$Message.success("成功选入该课程！");
 
-            this.handleSelectAll(false);
-          })
-          .catch(failResponse => {
-            this.handleSelectAll(false);
+              this.handleSelectAll(false);
+            })
+            .catch(failResponse => {
+              this.handleSelectAll(false);
 
-            this.$Message.error("选课发生冲突");
-          });
+              this.$Message.error("你已修过该课程！");
+            });
+        }
       },
       handleRow(selection) {
         this.handlecourse = selection;
@@ -402,6 +403,7 @@
     background: #256dc1 !important;
     color: aliceblue !important;
   }
+
   .ivu-menu-item:hover {
     background: #2f8ff7 !important;
   }

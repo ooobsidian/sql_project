@@ -38,7 +38,6 @@
       </Sider>
       <Layout :style="{marginLeft: '200px'}">
         <Breadcrumb :style="{marginLeft:'40px',marginTop:'40px'}">
-          <BreadcrumbItem>SQL</BreadcrumbItem>
           <BreadcrumbItem>选课管理系统</BreadcrumbItem>
           <BreadcrumbItem>个人信息</BreadcrumbItem>
         </Breadcrumb>

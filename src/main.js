@@ -13,7 +13,7 @@ import 'iview/dist/styles/iview.css';
 var echarts = require('echarts')
 Vue.prototype.$echarts = echarts
 var axios = require('axios')
-axios.defaults.baseURL = 'http://172.20.10.5:8080/api'
+axios.defaults.baseURL = 'http://192.168.50.219:8080/api'
 // 将API方法绑定到全局
 Vue.prototype.$axios = axios
 Vue.use(iView)

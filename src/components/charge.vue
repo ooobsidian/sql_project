@@ -30,7 +30,6 @@
       </Sider>
       <Layout :style="{marginLeft: '200px'}">
         <Breadcrumb :style="{marginLeft:'40px',marginTop:'40px'}">
-          <BreadcrumbItem>SQL</BreadcrumbItem>
           <BreadcrumbItem>选课管理系统</BreadcrumbItem>
           <BreadcrumbItem>课程管理</BreadcrumbItem>
         </Breadcrumb>
@@ -117,21 +116,21 @@
                               :label-width="80"
                             >
                               <FormItem label="老师姓名" prop="tname">
-                                <Input v-model="formItem.tname" placeholder="请输入老师姓名"></Input>
+                                <Input v-model="formItem.tname" placeholder="请输入老师姓名" clearable></Input>
                               </FormItem>
                               <FormItem label="课号">{{current}}</FormItem>
                               <FormItem label="学分">
                                 <InputNumber :max="10" :min="1" v-model="formItem.credit"></InputNumber>
                               </FormItem>
                               <FormItem label="课程名称" prop="cname">
-                                <Input v-model="formItem.cname" placeholder="请输入课程姓名"></Input>
+                                <Input v-model="formItem.cname" placeholder="请输入课程姓名" clearable></Input>
                               </FormItem>
                               <FormItem label="院系名称" prop="sdept">
-                                <Input v-model="formItem.sdept" placeholder="请输入院系姓名"></Input>
+                                <Input v-model="formItem.sdept" placeholder="请输入院系姓名" clearable></Input>
                               </FormItem>
                               <FormItem>
                                 <Button @click="submitcourse()" type="success">提交</Button>
-                                <Button style="margin-left: 8px" type="error">取消</Button>
+                                <Button style="margin-left: 8px" @click="Reset('forItem')">重置</Button>
                               </FormItem>
                             </Form>
                           </Col>
@@ -345,6 +344,7 @@
             this.$Message.success("创建课程成功");
             this.getData();
             this.getcurrentcno();
+            this.Reset('forItem')
             this.$router.push("/charge");
           })
           .catch(failResponse => {
@@ -474,6 +474,9 @@
           })
           .catch(failResponse => {
           });
+      },
+      Reset(name){
+        this.$refs[name].resetFields();
       }
     }
   };

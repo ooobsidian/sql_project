@@ -8,52 +8,52 @@
       class="code-row-bg"
     >
       <Col :style="{height:'50%'}" span="12">
-        <Card :style="{marginBottom:'10px'}" :bordered="true" style="background: #ffffff8f;border-radius: 10px;">
-          <p slot="title" :style="{fontSize:'large'}">
-            上海大学选课系统欢迎你
-          </p>
-          <Row
-            :style="{height:'inherit'}"
-            type="flex"
-            align="middle"
-            justify="center"
-            class="code-row-bg"
-          >
-            <Col span="24">
-              <Form ref="formInline" :model="formInline" :rules="ruleInline">
-                <FormItem prop="账号">
-                  <Input
-                    :style="{width:'50%',margin:'0 auto'}"
-                    type="text"
-                    v-model="formInline.login"
-                    placeholder="账号"
-                    clearable
-                  >
-                  <Icon type="ios-person-outline" slot="prepend"></Icon>
-                  </Input>
-                </FormItem>
-                <FormItem prop="密码">
-                  <Input
-                    :style="{width:'50%',margin:'0 auto'}"
-                    type="password"
-                    v-model="formInline.password"
-                    @keyup.enter.native="login()"
-                    placeholder="密码"
-                    clearable
-                  >
-                  <Icon type="ios-lock-outline" slot="prepend"></Icon>
-                  </Input>
-                </FormItem>
-                <FormItem :style="{width:'50%',margin:'0 auto'}">
-                  <div style="text-align: center">
-                    <Button type="primary" @click.native="login">登陆</Button>
-                    <Button :style="{marginLeft:'10px'}" to="/register">注册</Button>
-                  </div>
-                </FormItem>
-              </Form>
-            </Col>
-          </Row>
-        </Card>
+      <Card :style="{marginBottom:'10px'}" :bordered="true" style="background: #ffffff8f;border-radius: 10px;">
+        <p slot="title" :style="{fontSize:'large'}">
+          上海大学选课系统欢迎你
+        </p>
+        <Row
+          :style="{height:'inherit'}"
+          type="flex"
+          align="middle"
+          justify="center"
+          class="code-row-bg"
+        >
+          <Col span="24">
+          <Form ref="formInline" :model="formInline" :rules="ruleInline">
+            <FormItem prop="账号">
+              <Input
+                :style="{width:'50%',margin:'0 auto'}"
+                type="text"
+                v-model="formInline.login"
+                placeholder="账号"
+                clearable
+              >
+              <Icon type="ios-person-outline" slot="prepend"></Icon>
+              </Input>
+            </FormItem>
+            <FormItem prop="密码">
+              <Input
+                :style="{width:'50%',margin:'0 auto'}"
+                type="password"
+                v-model="formInline.password"
+                @keyup.enter.native="login()"
+                placeholder="密码"
+                clearable
+              >
+              <Icon type="ios-lock-outline" slot="prepend"></Icon>
+              </Input>
+            </FormItem>
+            <FormItem :style="{width:'50%',margin:'0 auto'}">
+              <div style="text-align: center">
+                <Button type="primary" @click.native="login">登陆</Button>
+                <Button :style="{marginLeft:'10px'}" to="/register">注册</Button>
+              </div>
+            </FormItem>
+          </Form>
+          </Col>
+        </Row>
+      </Card>
       </Col>
     </Row>
   </div>
@@ -109,7 +109,7 @@
             "/land",
             qs.stringify({
               login: this.formInline.login,
-               // pswd: this.formInline.password
+              // pswd: this.formInline.password
             }),
             {emulateJSON: true}
           )
@@ -123,14 +123,16 @@
             this.GLOBAL.ssign = status.ssign;
             if (status.pswd == this.formInline.password) {
               this.$Message.success("登陆成功");
-              if (status.ssign == "s") this.$router.push("/courseselect");
-              else this.$router.push("/charge");
+              if (status.ssign === 's')
+                this.$router.push("/courseselect");
+              else if (status.ssign === 't')
+                this.$router.push("/charge");
             } else {
-              this.$Message.error("账号或密码错误");
+              this.$Message.error("账号或密码错误！");
             }
           })
           .catch(failResponse => {
-            this.$Message.error("账号或密码错误");
+            this.$Message.error("检查网络连接！");
           });
       },
 
@@ -164,7 +166,8 @@
   .ivu-col-span-12 {
     width: 30% !important;
   }
-  .ivu-input ivu-input-default{
+
+  .ivu-input ivu-input-default {
     background: #ffffff8f !important;
   }
 </style>
