@@ -15,8 +15,9 @@
                 <div style="height:100px"></div>
               </Col>
               <Col span="8">
-                <Avatar :style="{background: color}" size="large"  src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3253669902,1784406936&fm=27&gp=0.jpg"></Avatar>
+                <Avatar :style="{background: color}" size="large">{{GLOBAL.sname}}</Avatar>
               </Col>
+              <Button size="small" type="dashed" ghost @click.native="logout">注销</Button>
               <Col span="8"></Col>
             </Row>
           </div>
@@ -54,7 +55,8 @@
                 <TabPane :style="{width:'100%'}" label="所有已修课程">
                   <Row type="flex" justify="end" class="code-row-bg">
                     <Col span="4" :style="{marginBottom:'10px'}">
-                      <i-switch v-model="switch1" @on-change="change" size="large"/>
+                      显示成绩柱状图
+                      <i-switch v-model="switch1" @on-change="change" />
                     </Col>
                   </Row>
                   <div v-show="!isShow">
@@ -67,31 +69,6 @@
             <Col span="3"></Col>
             <Col span="6">
               <div style="color:#52586E;width:300px;margin:-30px;margin-bottom:auto">
-                <!--<Card :bordered="true">-->
-                  <!--<p slot="title">-->
-                    <!--<Icon type="ios-analytics"></Icon>个人信息-->
-                  <!--</p>-->
-                  <!--<p>-->
-                    <!--<Icon type="md-done-all"/>-->
-                    <!--学号： {{GLOBAL.sno}}-->
-                  <!--</p>-->
-                  <!--<p>-->
-                    <!--<Icon type="md-done-all"/>-->
-                    <!--姓名： {{GLOBAL.sname}}-->
-                  <!--</p>-->
-                  <!--<p>-->
-                    <!--<Icon type="md-done-all"/>-->
-                    <!--性别： {{GLOBAL.sex}}-->
-                  <!--</p>-->
-                  <!--<p>-->
-                    <!--<Icon type="md-done-all"/>-->
-                    <!--年龄： {{GLOBAL.age}}-->
-                  <!--</p>-->
-                  <!--<p>-->
-                    <!--<Icon type="md-done-all"/>-->
-                    <!--学院： {{GLOBAL.sdept}}-->
-                  <!--</p>-->
-                <!--</Card>-->
               </div>
             </Col>
           </Row>
@@ -119,7 +96,7 @@ export default {
           axisPointer: {
             type: "cross",
             crossStyle: {
-              color: "#888"
+              // color: "#888"
             }
           }
         },
@@ -153,7 +130,7 @@ export default {
 
             itemStyle: {
               normal: {
-                color: "#2c3b57"
+                color: "#2D8CF0"
               }
             }
           }
@@ -231,6 +208,9 @@ export default {
     this.drawLine();
   },
   methods: {
+    logout(){
+      this.$router.push('/land')
+    },
     change() {
       this.isShow = !this.isShow;
     },

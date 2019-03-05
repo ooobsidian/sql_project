@@ -15,8 +15,9 @@
                 <div style="height:100px"></div>
               </Col>
               <Col span="8">
-                <Avatar :style="{background: color}" size="large"  src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3253669902,1784406936&fm=27&gp=0.jpg"></Avatar>
+                <Avatar :style="{background: color}" size="large">{{GLOBAL.sname}}</Avatar>
               </Col>
+              <Button size="small" type="dashed" ghost @click.native="logout">注销</Button>
               <Col span="8"></Col>
             </Row>
           </div>
@@ -55,8 +56,9 @@
                   </div>
                   <Drawer :closable="false" width="50" v-model="value">
                     <Row type="flex" justify="end" class="code-row-bg">
+                      显示成绩柱状图 &nbsp;
                       <Col span="4" :style="{marginBottom:'10px'}">
-                        <!--<i-switch v-model="switch1" @on-change="change" size="large"/>-->
+                         <i-switch v-model="switch1" @on-change="change"/>
                       </Col>
                     </Row>
                     <div v-show="!isShow">
@@ -232,7 +234,7 @@
 
               itemStyle: {
                 normal: {
-                  color: "#2c3b57"
+                  color: "#2D8CF0"
                 }
               }
             }
@@ -323,6 +325,9 @@
       this.drawLine();
     },
     methods: {
+      logout(){
+        this.$router.push('/land')
+      },
       submitcourse() {
         this.$axios
           .post(

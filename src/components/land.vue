@@ -8,7 +8,7 @@
       class="code-row-bg"
     >
       <Col :style="{height:'50%'}" span="12">
-        <Card :style="{marginBottom:'10px'}" :bordered="true">
+        <Card :style="{marginBottom:'10px'}" :bordered="true" style="background: #ffffff8f;border-radius: 10px;">
           <p slot="title" :style="{fontSize:'large'}">
             上海大学选课系统欢迎你
           </p>
@@ -27,6 +27,7 @@
                     type="text"
                     v-model="formInline.login"
                     placeholder="账号"
+                    clearable
                   >
                   <Icon type="ios-person-outline" slot="prepend"></Icon>
                   </Input>
@@ -38,6 +39,7 @@
                     v-model="formInline.password"
                     @keyup.enter.native="login()"
                     placeholder="密码"
+                    clearable
                   >
                   <Icon type="ios-lock-outline" slot="prepend"></Icon>
                   </Input>
@@ -107,7 +109,7 @@
             "/land",
             qs.stringify({
               login: this.formInline.login,
-               pswd: this.formInline.password
+               // pswd: this.formInline.password
             }),
             {emulateJSON: true}
           )
@@ -161,5 +163,8 @@
 
   .ivu-col-span-12 {
     width: 30% !important;
+  }
+  .ivu-input ivu-input-default{
+    background: #ffffff8f !important;
   }
 </style>

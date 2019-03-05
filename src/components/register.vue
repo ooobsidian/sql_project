@@ -8,7 +8,7 @@
       class="code-row-bg"
     >
       <Col span="8">
-        <Card>
+        <Card style="background: rgba(245,255,245,0.77);border-radius: 10px;">
           <p slot="title">
             <Icon type="md-add"/>&nbsp;注册
           </p>

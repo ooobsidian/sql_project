@@ -15,8 +15,9 @@
                 <div style="height:100px"></div>
               </Col>
               <Col span="8">
-                <Avatar :style="{background: color}" size="large" src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=3253669902,1784406936&fm=27&gp=0.jpg"></Avatar>
+                  <Avatar :style="{background: color}" size="large">{{GLOBAL.sname}}</Avatar>
               </Col>
+              <Button size="small" type="dashed" ghost @click.native="logout">注销</Button>
               <Col span="8"></Col>
             </Row>
           </div>
@@ -171,6 +172,9 @@
     },
 
     methods: {
+      logout(){
+        this.$router.push('/land')
+      },
       Istud() {
         if (this.GLOBAL.ssign == "t") return false;
         else return true;
